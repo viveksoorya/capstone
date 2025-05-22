@@ -10,16 +10,11 @@ def visualize_mda_universe(u, \
   style : py3Dmol style
   """
 
-
-  # The number of frames in the simulation
-  number_frames_analysis = len(u.trajectory)
-  if number_frames_analysis > 10:
-    stride_animation = number_frames_analysis/1 #100 KC
-  else:
-    stride_animation = 1
+  stride_animation = 1
 
   import warnings
   warnings.filterwarnings('ignore')
+  
 
   # TODO: do i need to assert that the line has no more than 80 characters?
     # Helper classes to read and get PDB fields
@@ -67,13 +62,14 @@ def visualize_mda_universe(u, \
           outstr += str(at)
         return outstr
 
+  u.trajectory[0]  
   import MDAnalysis as mda
   # Write out frames for animation
   protein = u.select_atoms(sel_string) 
   i = 0
   for ts in u.trajectory[0:len(u.trajectory):int(stride_animation)]:  # TODO: why unused variable ts
       if i > -1:
-          with mda.Writer('sample_' + str(i) + '.pdb', protein.n_atoms) as W:  
+          with mda.Writer('test-bioemu-ubq/sample_' + str(i) + '.pdb', protein.n_atoms) as W:  
               W.write(protein)
       i = i + 1
 
@@ -83,15 +79,15 @@ def visualize_mda_universe(u, \
   # Load frames as molecules (py3Dmol let us visualize a single "molecule" per frame)
   molecules = []
   for i in range(int(len(u.trajectory)/int(stride_animation))):
-      with open('sample_' + str(i) + '.pdb') as ifile:
+      with open('test-bioemu-ubq/sample_' + str(i) + '.pdb') as ifile:
           molecules.append(Molecule(ifile))
   models = ""
   for i in range(len(molecules)):
     models += "MODEL " + str(i) + "\n"
-    for j,mol in enumerate(molecules[i]):  # TODO: shouldn't the variable here be atom instead of mol?
+    for j,atom in enumerate(molecules[i]):  # TODO: shouldn't the variable here be atom instead of mol?
       # i think it should be atom;
       # TODO: figure out a way to get rid of the useless j variable
-      models += str(mol)
+      models += str(atom)
     models += "ENDMDL\n"
 
 
@@ -101,7 +97,8 @@ def visualize_mda_universe(u, \
   view.addModelsAsFrames(models)
   for i, at in enumerate(molecules[0]):
       view.setStyle({'model': -1, 'serial': i+1}, at.get("pymol", style))
-
   view.zoomTo()
-  view.animate({'loop': "forward", 'reps': 100}) # TODO: explain this line; value as 0 for reps actually stands for infinite
+  
+  view.animate({'loop': "forward", 'reps': 0}) #, 'interval': 1000}) # TODO: explain this line; value as 0 for reps actually stands for infinite
   return view
+
