@@ -1,0 +1,30 @@
+TITLE     MDANALYSIS FRAMES FROM 0, STEP 1: Created by PDBWriter
+CRYST1    1.000    1.000    1.000  90.00  90.00  90.00 P 1           1
+REMARK     285 UNITARY VALUES FOR THE UNIT CELL AUTOMATICALLY SET
+REMARK     285 BY MDANALYSIS PDBWRITER BECAUSE UNIT CELL INFORMATION
+REMARK     285 WAS MISSING.
+REMARK     285 PROTEIN DATA BANK CONVENTIONS REQUIRE THAT
+REMARK     285 CRYST1 RECORD IS INCLUDED, BUT THE VALUES ON
+REMARK     285 THIS RECORD ARE MEANINGLESS.
+MODEL        1
+ATOM      1  N   ASN A  24      -0.620  -7.310  -5.230  1.00  0.00      A    N  
+ATOM      2  CA  ASN A  24       0.780  -7.270  -5.650  1.00  0.00      A    C  
+ATOM      3  C   ASN A  24       1.510  -6.070  -5.060  1.00  0.00      A    C  
+ATOM      4  O   ASN A  24       2.730  -6.060  -4.890  1.00  0.00      A    O  
+ATOM      5  CB  ASN A  24       0.880  -7.250  -7.180  1.00  0.00      A    C  
+ATOM      6  CG  ASN A  24       0.390  -8.540  -7.810  1.00  0.00      A    C  
+ATOM      7  ND2 ASN A  24       0.000  -8.460  -9.080  1.00  0.00      A    N  
+ATOM      8  OD1 ASN A  24       0.350  -9.590  -7.170  1.00  0.00      A    O  
+ATOM      9  N   ARG A  53      -8.790  -5.850  -6.040  1.00  0.00      A    N  
+ATOM     10  CA  ARG A  53      -8.920  -5.100  -7.280  1.00  0.00      A    C  
+ATOM     11  C   ARG A  53      -7.660  -4.290  -7.580  1.00  0.00      A    C  
+ATOM     12  O   ARG A  53      -6.810  -4.280  -6.690  1.00  0.00      A    O  
+ATOM     13  CB  ARG A  53     -10.140  -4.170  -7.220  1.00  0.00      A    C  
+ATOM     14  CD  ARG A  53     -11.340  -2.300  -6.040  1.00  0.00      A    C  
+ATOM     15  CG  ARG A  53     -10.070  -3.130  -6.110  1.00  0.00      A    C  
+ATOM     16  CZ  ARG A  53     -12.580  -0.710  -7.480  1.00  0.00      A    C  
+ATOM     17  NE  ARG A  53     -11.550  -1.520  -7.260  1.00  0.00      A    N  
+ATOM     18  NH1 ARG A  53     -12.680  -0.040  -8.620  1.00  0.00      A    N  
+ATOM     19  NH2 ARG A  53     -13.500  -0.550  -6.540  1.00  0.00      A    N  
+ENDMDL
+END

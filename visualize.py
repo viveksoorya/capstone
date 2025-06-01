@@ -1,5 +1,5 @@
 # code borrowed from MDA_EROS_22Mar25.ipynb and slightly modified for use; credit for mentioned python notebook : Prof Kalyan Chakrabarti
-def visualize_mda_universe(u, \
+def visualize_mda_universe(u, output_dir='bioemu-samples',
     sel_string='not ((resname WAT) or (resname HOH))', 
     style={"cartoon": {'color': 'spectrum'}}):
   
@@ -62,6 +62,11 @@ def visualize_mda_universe(u, \
           outstr += str(at)
         return outstr
 
+
+  import os
+  if not os.path.exists(output_dir):
+      os.makedirs(output_dir)  # create the directory if it does not exist
+  write_to_file = os.path.join(output_dir, 'sample_')
   u.trajectory[0]  
   import MDAnalysis as mda
   # Write out frames for animation
@@ -69,17 +74,17 @@ def visualize_mda_universe(u, \
   i = 0
   for ts in u.trajectory[0:len(u.trajectory):int(stride_animation)]:  # TODO: why unused variable ts
       if i > -1:
-          with mda.Writer('test-bioemu-ubq/sample_' + str(i) + '.pdb', protein.n_atoms) as W:  
+          with mda.Writer(write_to_file + str(i) + '.pdb', protein.n_atoms) as W:  
               W.write(protein)
       i = i + 1
 
   # TODO: why write to files at all if all you are going to do with the files is to  put them all in the string models later
 
-
+  
   # Load frames as molecules (py3Dmol let us visualize a single "molecule" per frame)
   molecules = []
   for i in range(int(len(u.trajectory)/int(stride_animation))):
-      with open('test-bioemu-ubq/sample_' + str(i) + '.pdb') as ifile:
+      with open(write_to_file + str(i) + '.pdb') as ifile:
           molecules.append(Molecule(ifile))
   models = ""
   for i in range(len(molecules)):
